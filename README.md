@@ -8,8 +8,9 @@ What I work on:
 - **CI/CD:** GitLab CI pipelines that build and scan container images and produce an SBOM for each one, and a self-service pipeline for database schema changes.
 - **ML infrastructure:** a FastAPI service that runs multi-stage ML pipelines in containers, and automation for serving large language models with vLLM on GPU nodes.
 
-My day-to-day work is in private repositories. The projects here are personal:
+My day-to-day work is in private repositories. The projects here are personal. The first two are tested end to end by GitHub Actions on a Kubernetes cluster that each run creates:
 
+- [inference-on-kubernetes](https://github.com/shubhroses/inference-on-kubernetes): an inference-style API with a Helm chart, Prometheus error-budget alerts, a Grafana dashboard and KEDA autoscaling. GitHub Actions creates a kind cluster on two Kubernetes versions and tests rollouts, node drains, scaling and alerting under load. The model is a stand-in.
 - [signed-image-pipeline](https://github.com/shubhroses/signed-image-pipeline): a GitHub Actions pipeline that scans a container image, writes an SBOM, then signs and attests it with keyless cosign, plus a Kyverno policy that admits nothing else. Every release tests nine accept and reject cases on a kind cluster.
 - [rocket-telemetry-pipeline](https://github.com/shubhroses/rocket-telemetry-pipeline): a data pipeline over synthetic rocket engine telemetry with a Python generator and cleaner, dbt models for Redshift and a Streamlit dashboard, checked by pytest and `dbt parse` in GitHub Actions.
 - [nba-game-prediction](https://github.com/shubhroses/nba-game-prediction): a Prefect flow that lands the live NBA scoreboard in S3, a loader into Snowflake, dbt models over the raw JSON, scikit-learn notebooks that backtest win prediction, and a React app that shows bookmaker favourites.
